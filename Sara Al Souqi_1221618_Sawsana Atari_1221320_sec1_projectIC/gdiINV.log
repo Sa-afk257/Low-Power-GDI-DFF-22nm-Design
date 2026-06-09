@@ -1,0 +1,25 @@
+Circuit: *** SPICE deck for cell gdiINV{lay} from library my_work
+
+Direct Newton iteration for .op point succeeded.
+
+tf=1.87718e-009 FROM 1.24597e-008 TO 1.43368e-008
+tr=1.82174e-009 FROM 6.09516e-009 TO 7.9169e-009
+
+
+Date: Mon Jun 16 15:32:56 2025
+Total elapsed time: 0.342 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2781
+traniter = 2767
+tranpoints = 1276
+accept = 1219
+rejected = 57
+matrix size = 24
+fillins = 0
+solver = Normal
+Matrix Compiler1: 2.24 KB object code size  1.1/1.2/[0.3]
+Matrix Compiler2: 2.59 KB object code size  1.4/1.6/[0.4]
+

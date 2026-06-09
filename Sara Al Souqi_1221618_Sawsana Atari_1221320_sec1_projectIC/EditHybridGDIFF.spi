@@ -1,0 +1,32 @@
+*** SPICE deck for cell EditHybridGDIFF{lay} from library project_ic
+*** Created on Sun Jun 15, 2025 15:41:34
+*** Last revised on Mon Jun 16, 2025 15:45:05
+*** Written on Mon Jun 16, 2025 15:45:08 by Electric VLSI Design System, version 9.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: EditHybridGDIFF{lay}
+Mnmos@0 gnd net@20 net@20 gnd nmos L=0.044U W=0.11U AS=0.015P AD=0.029P PS=0.378U PD=0.809U
+Mnmos@1 net@32 CLK net@20 gnd nmos L=0.044U W=0.11U AS=0.015P AD=0.019P PS=0.378U PD=0.557U
+Mnmos@2 Q net@95 gnd gnd nmos L=0.044U W=0.11U AS=0.029P AD=0.019P PS=0.809U PD=0.51U
+Mnmos@3 net@20 net@32 gnd gnd nmos L=0.044U W=0.11U AS=0.029P AD=0.015P PS=0.809U PD=0.378U
+Mnmos@4 gnd Q Q gnd nmos L=0.044U W=0.11U AS=0.019P AD=0.029P PS=0.51U PD=0.809U
+Mnmos@5 net@95 CLK net@32 gnd nmos L=0.044U W=0.11U AS=0.019P AD=0.022P PS=0.557U PD=0.594U
+Mpmos@0 vdd net@20 net@20 vdd pmos L=0.044U W=0.22U AS=0.015P AD=0.05P PS=0.378U PD=1.067U
+Mpmos@1 net@32 CLK D vdd pmos L=0.044U W=0.22U AS=0.029P AD=0.019P PS=0.704U PD=0.557U
+Mpmos@2 Q net@95 vdd vdd pmos L=0.044U W=0.22U AS=0.05P AD=0.019P PS=1.067U PD=0.51U
+Mpmos@3 net@20 net@32 vdd vdd pmos L=0.044U W=0.22U AS=0.05P AD=0.015P PS=1.067U PD=0.378U
+Mpmos@4 vdd Q Q vdd pmos L=0.044U W=0.22U AS=0.019P AD=0.05P PS=0.51U PD=1.067U
+Mpmos@5 net@95 CLK Q vdd pmos L=0.044U W=0.22U AS=0.019P AD=0.022P PS=0.51U PD=0.594U
+
+* Spice Code nodes in cell cell 'EditHybridGDIFF{lay}'
+VDD VDD 0 DC 0.95
+VD D 0 PULSE(0 0.95 0ns 1ns 1ns 10ns 20ns)
+VCLK CLK 0 PULSE(0 0.95 5ns 1ns 1ns 10ns 20ns)
+*VINIT Q 0 DC 0
+cload Q 0 25fF
+.tran 0.1ns 200ns
+.measure tran tf  trig v(Q) val=0.72 fall=1 td=5ns  targ v(Q) val=0.08 fall=1
+.measure tran tr  trig v(Q) val=0.08 rise=1 td=5ns targ v(Q) val=0.72 rise=1
+.include C:\Users\IMOE001\Desktop\university\ic\project\22nm.txt
+.END

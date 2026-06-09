@@ -1,0 +1,35 @@
+*** SPICE deck for cell mux_2x1{sch} from library IC_PROJ_1191375_1200902_1200078_1201369
+*** Created on Sun Aug 27, 2023 17:24:38
+*** Last revised on Mon Jun 16, 2025 13:12:03
+*** Written on Mon Jun 16, 2025 13:12:07 by Electric VLSI Design System, version 9.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT IC_PROJ_1191375_1200902_1200078_1201369__NOT FROM CELL IC_PROJ_1191375_1200902_1200078_1201369:NOT{sch}
+.SUBCKT IC_PROJ_1191375_1200902_1200078_1201369__NOT in out
+** GLOBAL gnd
+** GLOBAL vdd
+Mnmos@3 out in gnd gnd NMOS L=0.044U W=0.11U
+Mpmos@1 vdd in out vdd PMOS L=0.044U W=0.22U
+.ENDS IC_PROJ_1191375_1200902_1200078_1201369__NOT
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: IC_PROJ_1191375_1200902_1200078_1201369:mux_2x1{sch}
+Mnmos@0 a net@124 out gnd NMOS L=0.044U W=0.11U
+Mnmos@1 b s out gnd NMOS L=0.044U W=0.11U
+Mpmos@0 out s a vdd PMOS L=0.044U W=0.22U
+Mpmos@1 out net@124 b vdd PMOS L=0.044U W=0.22U
+XNOT@2 s net@124 IC_PROJ_1191375_1200902_1200078_1201369__NOT
+
+* Spice Code nodes in cell cell 'IC_PROJ_1191375_1200902_1200078_1201369:mux_2x1{sch}'
+VDD VDD 0 DC 0.95
+VA a 0 PULSE(0 0.95 0ns 1ns 1ns 10ns 20ns)
+VB b 0 PULSE(0 0.95 5ns 1ns 1ns 10ns 20ns)
+Vs s 0 PULSE(0 0.95 10ns 1ns 1ns 10ns 20ns)
+cload OUT 0 25fF
+.tran 0.1ns 200ns
+.measure tran tf  trig v(OUT) val=0.72 fall=1 td=5ns  targ v(OUT) val=0.08 fall=1
+.measure tran tr  trig v(OUT) val=0.08 rise=1 td=5ns targ v(OUT) val=0.72 rise=1
+.include C:\Users\IMOE001\Desktop\university\ic\project\22nm.txt
+.END

@@ -1,0 +1,41 @@
+*** SPICE deck for cell EditCMOS{sch} from library project_ic
+*** Created on Sun Jun 15, 2025 15:04:13
+*** Last revised on Mon Jun 16, 2025 13:23:31
+*** Written on Mon Jun 16, 2025 13:31:29 by Electric VLSI Design System, version 9.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+.global gnd vdd
+
+*** TOP LEVEL CELL: EditCMOS{sch}
+Mnmos@0 net@51 net@46 net@14 gnd NMOS L=0.044U W=0.11U
+Mnmos@1 D CLK net@14 gnd NMOS L=0.044U W=0.11U
+Mnmos@2 net@46 CLK gnd gnd nmos L=0.044U W=0.11U
+Mnmos@3 net@51 net@75 net@55 gnd NMOS L=0.044U W=0.11U
+Mnmos@4 net@105 CLK net@55 gnd NMOS L=0.044U W=0.11U
+Mnmos@5 net@75 CLK gnd gnd nmos L=0.044U W=0.11U
+Mnmos@6 net@120 net@51 gnd gnd nmos L=0.022U W=8.8U
+Mnmos@7 net@51 net@14 gnd gnd nmos L=0.022U W=3.96U
+Mnmos@8 net@105 Q gnd gnd nmos L=0.022U W=3.96U
+Mnmos@9 Q net@55 gnd gnd nmos L=0.022U W=1.65U
+Mpmos@0 net@14 CLK net@51 vdd PMOS L=0.044U W=0.22U
+Mpmos@1 net@14 net@46 D vdd PMOS L=0.044U W=0.22U
+Mpmos@2 vdd CLK net@46 vdd pmos L=0.044U W=0.22U
+Mpmos@3 net@55 CLK net@51 vdd PMOS L=0.044U W=0.22U
+Mpmos@4 net@55 net@75 net@105 vdd PMOS L=0.044U W=0.22U
+Mpmos@5 vdd CLK net@75 vdd pmos L=0.044U W=0.22U
+Mpmos@6 vdd net@51 net@120 vdd pmos L=0.022U W=17.6U
+Mpmos@7 vdd net@14 net@51 vdd pmos L=0.022U W=7.92U
+Mpmos@8 vdd Q net@105 vdd pmos L=0.022U W=7.92U
+Mpmos@9 vdd net@55 Q vdd pmos L=0.022U W=3.3U
+
+* Spice Code nodes in cell cell 'EditCMOS{sch}'
+VDD VDD 0 DC 0.95v
+VD D 0 dc 0 PULSE(0.95 0 0 1ns 1ns 17ns 40ns)
+VCLK CLK 0 dc 0 PULSE(0 0.95  0 0.1ns 0.1ns 3.9ns 7.8ns)
+cload Q 0 25fF
+.tran 200ns
+.measure tran tf  trig v(Q) val=0.72 fall=1 td=5ns targ v(Q) val=0.08 fall=1
+.measure tran tr  trig v(Q) val=0.08 rise=1 td=5ns targ v(Q) val=0.72 rise=1
+.include C:\Users\IMOE001\Desktop\university\ic\project\22nm.txt
+.END

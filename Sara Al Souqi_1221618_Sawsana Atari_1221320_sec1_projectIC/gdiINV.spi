@@ -1,0 +1,23 @@
+*** SPICE deck for cell gdiINV{lay} from library my_work
+*** Created on Sun Jun 15, 2025 11:34:12
+*** Last revised on Mon Jun 16, 2025 15:32:48
+*** Written on Mon Jun 16, 2025 15:32:54 by Electric VLSI Design System, version 9.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: my_work:gdiINV{lay}
+Mnmos@0 net@7 A gnd gnd nmos L=0.044U W=0.11U AS=0.051P AD=0.022P PS=1.166U PD=0.594U
+Mnmos@1 F net@7 gnd gnd nmos L=0.044U W=0.11U AS=0.051P AD=0.022P PS=1.166U PD=0.594U
+Mpmos@0 net@7 A vdd vdd pmos L=0.044U W=0.22U AS=0.102P AD=0.022P PS=2.068U PD=0.594U
+Mpmos@1 F net@7 B vdd pmos L=0.044U W=0.22U AS=0.029P AD=0.022P PS=0.704U PD=0.594U
+
+* Spice Code nodes in cell cell 'my_work:gdiINV{lay}'
+vdd vdd 0 DC 0.95
+VA A 0 PULSE(0 0.95 0ns 1ns 1ns 10ns 20ns)
+VB B 0 PULSE(0 0.95 5ns 1ns 1ns 10ns 20ns)
+cload F 0 50fF
+.tran 80n
+.measure tran tf  trig v(F) val=0.72 fall=1 td=3.8ns  targ v(F) val=0.08 fall=1
+.measure tran tr  trig v(F) val=0.08 rise=1 td=3.8ns targ v(F) val=0.72 rise=1
+.include C:\Users\IMOE001\Desktop\university\ic\project\22nm.txt
+.END

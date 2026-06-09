@@ -1,0 +1,31 @@
+*** SPICE deck for cell EditModifiedGdi{lay} from library project_ic
+*** Created on Sun Jun 15, 2025 21:03:34
+*** Last revised on Mon Jun 16, 2025 16:59:43
+*** Written on Mon Jun 16, 2025 17:12:37 by Electric VLSI Design System, version 9.08
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** TOP LEVEL CELL: EditModifiedGdi{lay}
+Mnmos@0 net@98 net@114 gnd gnd nmos L=0.044U W=0.88U AS=0.076P AD=0.184P PS=1.513U PD=2.915U
+Mnmos@1 net@110 CLK net@114 gnd nmos L=0.044U W=0.33U AS=0.058P AD=0.065P PS=1.155U PD=1.254U
+Mnmos@2 gnd Q net@121 gnd nmos L=0.044U W=0.396U AS=0.076P AD=0.076P PS=1.43U PD=1.513U
+Mnmos@3 net@114 net@110 gnd gnd nmos L=0.044U W=0.396U AS=0.076P AD=0.058P PS=1.513U PD=1.155U
+Mnmos@4 Q net@120 gnd gnd nmos L=0.044U W=0.165U AS=0.076P AD=0.033P PS=1.513U PD=0.759U
+Mnmos@5 net@120 CLK net@114 gnd nmos L=0.044U W=0.264U AS=0.058P AD=0.052P PS=1.155U PD=1.056U
+Mpmos@0 net@98 net@114 vdd vdd pmos L=0.044U W=1.76U AS=0.14P AD=0.184P PS=2.448U PD=2.915U
+Mpmos@1 net@110 CLK net@111 vdd pmos L=0.044U W=0.66U AS=0.087P AD=0.065P PS=1.584U PD=1.254U
+Mpmos@2 vdd Q net@121 vdd pmos L=0.044U W=0.792U AS=0.076P AD=0.14P PS=1.43U PD=2.448U
+Mpmos@3 net@114 net@110 vdd vdd pmos L=0.044U W=0.792U AS=0.14P AD=0.058P PS=2.448U PD=1.155U
+Mpmos@4 Q net@120 vdd vdd pmos L=0.044U W=0.33U AS=0.14P AD=0.033P PS=2.448U PD=0.759U
+Mpmos@5 net@120 CLK net@121 vdd pmos L=0.044U W=0.528U AS=0.076P AD=0.052P PS=1.43U PD=1.056U
+
+* Spice Code nodes in cell cell 'EditModifiedGdi{lay}'
+VDD VDD 0 DC 0.95v
+VD D 0 dc 0 PULSE(0.95 0 0 1ns 1ns 17ns 40ns)
+VCLK CLK 0 dc 0 PULSE(0 0.95  0 0.1ns 0.1ns 3.9ns 7.8ns)
+cload Q 0 25fF
+.tran 200ns
+.measure tran tf  trig v(Q) val=0.72 fall=1 td=5ns targ v(Q) val=0.08 fall=1
+.measure tran tr  trig v(Q) val=0.08 rise=1 td=5ns targ v(Q) val=0.72 rise=1
+.include C:\Users\IMOE001\Desktop\university\ic\project\22nm.txt
+.END
